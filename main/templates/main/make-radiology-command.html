@@ -1,0 +1,26 @@
+{% extends 'main/header.html' %}
+
+
+{%  block content %}
+
+    {% if user.is_authenticated %}
+        <h4>Make a radiology command</h4>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <button class="btn" style="background-color: green; color:yellow" type="submit">Request Appointment</button>
+        </form>
+
+        <p>
+            If you can't find your patient, click <a href="/add-patient"><strong>here</strong></a> to add him/her to the database instead.<br>
+            "Preferred day and time for appointment" is <strong><u>NOT THE FINAL</u></strong> day and time for your appointment, your final schedule will be calculated after
+            we have processed your command and you will be able to know by visiting the page here.
+        </p>
+    {% else %}
+        <h5>You can't access this page without being logged in.</h5>
+        <br>
+        <h6>Bye bye!!!</h6>
+    {% endif %}
+
+{% endblock %}

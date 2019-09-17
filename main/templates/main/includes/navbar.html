@@ -1,0 +1,28 @@
+<!-- Dropdown Structure -->
+
+<ul id="dropdown1" class="dropdown-content">
+    {%  if user.is_authenticated %}
+        <li><a href="/add-patient">Add a patient</a></li>
+        <li><a href="/make-radiology-command">Request an Appointment</a></li>
+        <li><a href="/final-appointments">Appointments</a></li>
+        <li class="divider"></li>
+        <li><a href="/logout">Logout</a></li>
+    {%  else %}
+        <li><a href="/login">Login</a></li>
+    {% endif %}
+
+</ul>
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo">Radiology Department</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+            {% if user.is_authenticated %}
+                <li>{{ user.username }}</li>
+            {% endif %}
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Menu<i class="material-icons right"></i></a></li>
+    </ul>
+  </div>
+</nav>

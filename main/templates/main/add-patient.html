@@ -1,0 +1,21 @@
+{% extends 'main/header.html' %}
+
+
+{%  block content %}
+
+    {% if user.is_authenticated %}
+        <h4>Add a patient</h4>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn" style="background-color: yellow; color:blue" type="submit">Add patient</button>
+        </form>
+        <p>If the patient is already in our database head to the radiology command <a href="/make-radiology-command">here</a> instead.</p>
+        <br><br>
+    {% else %}
+        <h5>You can't access this page without being logged in.</h5>
+        <br>
+        <h6>Bye bye!!!</h6>
+    {% endif %}
+
+{% endblock %}

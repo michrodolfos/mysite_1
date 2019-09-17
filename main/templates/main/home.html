@@ -1,0 +1,36 @@
+{% extends 'main/header.html' %}
+
+
+{%  block content %}
+
+    {% if user.is_authenticated %}
+        <h5>Welcome, <strong>{{ user.first_name }} {{ user.last_name }}</strong></h5>
+        <br>
+        <h6>What would you like to do?</h6>
+        <br>
+        <p>You can view your possible actions on this page or by clicking the menu on your top right.</p>
+        <br>
+        <dl>
+            <dt>Add a patient <a href="add-patient"><strong>here</strong></a>.</dt>
+            <dd>Allows you to add a new patient to the database.</dd>
+            <dt>Make a Radiology Command <a href="make-radiology-command"><strong>here</strong></a>.</dt>
+            <dd>Allows you to create and send a radiology command.</dd>
+            <dt>Request schedule print info <a href="final-appointments"><strong>here</strong></a>.</dt>
+            <dd>Use this to find out what's the final day and time for your patient's schedule, after we have process your radiology command.</dd>
+        </dl>
+    {% else %}
+        <h5>Welcome to the homepage of my web application</h5>
+        <br>
+        <p>This is a web app I made to make request radiology appointments.<br>
+        My application includes a full login and logout system for doctors.<br>
+        If you would like to perform any of these actions be sure to check the drop down menu on top right corner,
+        <strong>options will appear based on your current login-logout state</strong>.<br><br><br>
+        <strong><i>Notice:</i></strong><br>
+        Radiology appointments can only be made by doctors registered to our site.<br>
+        If you would like to make an appointment simple login and make one using the menu on the top right corner.<br>
+        You will also need to log in to find out if your radiology command has been accepted and what's the final day and time for your patient's appointment.</p>
+    {% endif %}
+
+    <br><br><br>
+    <p>To connect as staff please use this <a href="/admin"><strong><u>link</u></strong></a>.</p>
+{% endblock %}

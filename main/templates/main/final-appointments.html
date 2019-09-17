@@ -1,0 +1,22 @@
+{% extends 'main/header.html' %}
+
+
+{%  block content %}
+
+    <p>
+        {% if user.is_authenticated %}
+            <h4>Here are all the currently accepted appointments with their final day and time schedule:</h4>
+            <br><br>
+            <ul>
+                {% for finalsched in finalschedules %}
+                    <li>{{ finalsched }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h5>You can't access this page without being logged in.</h5>
+            <br>
+            <h6>Bye bye!!!</h6>
+        {% endif %}
+    </p>
+
+{% endblock %}

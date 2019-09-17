@@ -1,0 +1,21 @@
+{% extends 'main/header.html' %}
+
+
+{%  block content %}
+
+    {% if user.is_authenticated %}
+        <h4>You are currently logged in.</h4>
+        <br>
+        <h6>Please log out to register.</h6>
+    {% else %}
+        <h4>Create an account</h4>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn" style="background-color: yellowgreen; color:forestgreen" type="submit">register</button>
+        </form>
+        <br>
+        <p>If you already have and account, <a href="/login"><strong>login</strong></a> instead.</p>
+    {% endif %}
+
+{% endblock %}
